@@ -8,7 +8,20 @@ from db_fxns import *
 conn = sqlite3.connect('data/world.sqlite')
 c = conn.cursor()
 
+def sidebar_bg(side_bg):
 
+   side_bg_ext = 'png'
+
+   st.markdown(
+      f"""
+	      <style>
+	      header.css-k0sv6k.e8zbici2 {{
+		  background: url(data:image/{img_ext};base64,{bin_str});
+	      }}
+	      </style>
+	""",
+      unsafe_allow_html=True,
+      )
 # Fxn Make Execution
 def sql_executor(raw_code):
 	c.execute(raw_code)
