@@ -4,6 +4,7 @@ import pandas as pd
 from streamlit_option_menu import  option_menu
 # DB Mgmt
 import sqlite3 
+from db_fxns import *
 conn = sqlite3.connect('data/world.sqlite')
 c = conn.cursor()
 
@@ -65,10 +66,49 @@ def main():
 					st.dataframe(query_df)
 
 
-	else:
+	elif choice =="Login":
 		st.subheader("About")
+		username = st.sidebar.text_input("Username")
+		password = st.sidebar.text_input("Password",type='password')
+		if st.checkbox("Login"):
+			create_usertable()
+			result = login_user(username,password)
+			# result = login_user_unsafe(username,password)
+			# if password == "12345":
+			if result:
+				st.success("Logged In as {}".format(username))
 
+				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
 
+				if task == "Add Posts":
+					st.subheader("Add Posts")
+
+				elif task == "Analytics":
+					st.subheader("Analytics")
+
+				elif task == "Manage":
+					st.subheader("Manage Blog")
+					users_result = view_all_users()
+					clean_db = pd.DataFrame(users_result,columns=["Username","Password"])
+					st.dataframe(clean_db)
+			else:
+				st.warning("Incorrect Username/Password")
+
+	else:
+		st.subheader("Create An Account")
+		new_username = st.text_input("User name")
+		new_password = st.text_input("Password",type='password')
+		confirm_password = st.text_input('Confirm Password',type='password')
+
+		if new_password == confirm_password:
+			st.success("Valid Password Confirmed")
+		else:
+			st.warning("Password not the same")
+
+		if st.button("Sign Up"):
+			create_usertable()
+			add_userdata(new_username,new_password)
+			st.success("Successfully Created an Account")
 
 
 
