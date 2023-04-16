@@ -1,7 +1,7 @@
 # Core Pkgs
 import streamlit as st 
 import pandas as pd
-
+from streamlit_option_menu import  option_menu
 # DB Mgmt
 import sqlite3 
 conn = sqlite3.connect('data/world.sqlite')
@@ -24,9 +24,14 @@ countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
 
 def main():
 	st.title("SQLPlayground")
-
-	menu = ["Home","About"]
-	choice = st.sidebar.selectbox("Menu",menu)
+	choice=option_menu(
+    	    menu_title=None,
+     	    options=["Home","About"],
+    	    icons=["📎","📎","📎","📎"],
+    	    orientation="vertical",key="BSDFDS"
+	)
+	#menu = ["Home","About"]
+	#choice = st.sidebar.selectbox("Menu",menu)
 
 	if choice == "Home":
 		st.subheader("HomePage")
