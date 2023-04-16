@@ -78,7 +78,7 @@ def main():
 			if result:
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
-    					choice = option_menu("Main Menu2", ["Registera","Logins", 'Homswwe'], 
+    					choice = option_menu("Main Menu", ["Registera","Logins", 'Homswwe'], 
         				icons=['person','key', 'house'], menu_icon="pc", default_index=1,orientation="vertical")
 
 				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
