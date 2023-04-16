@@ -8,20 +8,42 @@ from db_fxns import *
 conn = sqlite3.connect('data/world.sqlite')
 c = conn.cursor()
 
-def sidebar_bg(side_bg):
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
-   side_bg_ext = 'png'
 
-   st.markdown(
-      f"""
-	      <style>
-	      header.css-k0sv6k.e8zbici2 {{
-		  background: url(data:image/{img_ext};base64,{bin_str});
-	      }}
-	      </style>
-	""",
-      unsafe_allow_html=True,
-      )
+img = get_img_as_base64("image.jpg")
+
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
+background-size: 180%;
+background-position: top left;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+
+[data-testid="stSidebar"] > div:first-child {{
+background-image: url("data:image/png;base64,{img}");
+background-position: center; 
+background-repeat: no-repeat;
+background-attachment: fixed;
+}}
+
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+
+[data-testid="stToolbar"] {{
+right: 2rem;
+}}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
 # Fxn Make Execution
 def sql_executor(raw_code):
 	c.execute(raw_code)
