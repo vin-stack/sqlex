@@ -28,7 +28,7 @@ background-attachment: local;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("data:image/png;base64,{img}");
+background-image: url("https://d2gg9evh47fn9z.cloudfront.net/1600px_COLOURBOX11140963.jpg");
 background-position: center; 
 background-repeat: no-repeat;
 background-attachment: fixed;
