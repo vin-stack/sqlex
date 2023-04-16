@@ -24,15 +24,10 @@ countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
 
 def main():
 	st.title("SQLPlayground")
-	chewoice=option_menu(
-    	    menu_title=None,
-     	    options=["Home","About"],
-    	    icons=["📎","📎","📎","📎"],
-    	    orientation="vertical",key="BSDFDS"
-	)
+	
 	with st.sidebar:
-    		choice = option_menu("Main Menu", ["Home", 'Settings'], 
-        	icons=['house', 'gear'], menu_icon="cast", default_index=1,orientation="vertical")
+    		choice = option_menu("Main Menu", ["Home", 'About'], 
+        	icons=['house', 'info'], menu_icon="network", default_index=1,orientation="vertical")
     	
 	#menu = ["Home","About"]
 	#choice = st.sidebar.selectbox("Menu",menu)
