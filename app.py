@@ -112,19 +112,34 @@ def main():
     					choice = option_menu( menu_title=None,options=["Cluster","Table", 'Query','Cluster Admin'],
         				icons=['people','table', 'code','track'],default_index=1,orientation="vertical")
 
-				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
+				col1,col2 = st.beta_columns(2)
 
-				if task == "Add Posts":
-					st.subheader("Add Posts")
+				with col1:
+					with st.form(key='query_form'):
+						raw_code = st.text_area("SQL Code Here")
+						submit_code = st.form_submit_button("Execute")
 
-				elif task == "Analytics":
-					st.subheader("Analytics")
+					# Table of Info
 
-				elif task == "Manage":
-					st.subheader("Manage Blog")
-					users_result = view_all_users()
-					clean_db = pd.DataFrame(users_result,columns=["Username","Password"])
-					st.dataframe(clean_db)
+					with st.beta_expander("Table Info"):
+						table_info = {'city':city,'country':country,'countrylanguage':countrylanguage}
+						st.json(table_info)
+
+				# Results Layouts
+				with col2:
+					if submit_code:
+						st.info("Query Submitted")
+						st.code(raw_code)
+
+						# Results 
+						query_results = sql_executor(raw_code)
+						with st.beta_expander("Results"):
+							st.write(query_results)
+
+						with st.beta_expander("Pretty Table"):
+							query_df = pd.DataFrame(query_results)
+							st.dataframe(query_df)
+
 			else:
 				st.warning("Incorrect Username/Password")
 
