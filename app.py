@@ -80,7 +80,7 @@ def main():
 				with st.sidebar:
 					
     					choice = option_menu( menu_title=None,options=["Cluster","Table", 'Query','Cluster Admin'],
-        				icons=['people','table', 'code','panel'],default_index=1,orientation="vertical")
+        				icons=['people','table', 'code','report'],default_index=1,orientation="vertical")
 
 				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
 
