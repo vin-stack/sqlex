@@ -28,7 +28,7 @@ def main():
 	
 	with st.sidebar:
     		choice = option_menu("Main Menu", ["Register","Login", 'Home'], 
-        	icons=['person','login', 'house'], menu_icon="pc", default_index=1,orientation="vertical")
+        	icons=['person','key', 'house'], menu_icon="pc", default_index=1,orientation="vertical")
     	
 	#menu = ["Home","About"]
 	#choice = st.sidebar.selectbox("Menu",menu)
@@ -68,8 +68,8 @@ def main():
 
 	elif choice =="Login":
 		st.subheader("About")
-		username = st.sidebar.text_input("Username")
-		password = st.sidebar.text_input("Password",type='password')
+		username = st.text_input("Username")
+		password = st.text_input("Password",type='password')
 		if st.checkbox("Login"):
 			create_usertable()
 			result = login_user(username,password)
