@@ -27,8 +27,8 @@ def main():
 	st.title("SQLSpace")
 	
 	with st.sidebar:
-    		choice = option_menu("Main Menu", ["Home", 'About'], 
-        	icons=['house', 'info'], menu_icon="pc", default_index=1,orientation="vertical")
+    		choice = option_menu("Main Menu", ["Register","Login", 'Home'], 
+        	icons=['person','login', 'house'], menu_icon="pc", default_index=1,orientation="vertical")
     	
 	#menu = ["Home","About"]
 	#choice = st.sidebar.selectbox("Menu",menu)
