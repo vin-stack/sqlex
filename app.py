@@ -78,7 +78,7 @@ def main():
 			if result:
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
-					menu_title=None,,
+					menu_title=None,
     					choice = option_menu["Registera","Logins", 'Homswwe'], 
         				icons=['person','key', 'house'],default_index=1,orientation="vertical"
 
