@@ -23,7 +23,7 @@ countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
 
 
 def main():
-	st.title("SQLPlayground")
+	st.title("SQLSpace")
 	
 	with st.sidebar:
     		choice = option_menu("Main Menu", ["Home", 'About'], 
