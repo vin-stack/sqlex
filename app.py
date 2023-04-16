@@ -28,7 +28,7 @@ def main():
 	
 	with st.sidebar:
     		choice = option_menu("SQLSPACE", ["Register","Login"], 
-        	icons=['person','key'], menu_icon="SQL", default_index=1,orientation="horizontal")
+        	icons=['person','key'], menu_icon="database", default_index=1,orientation="horizontal")
     	
 	#menu = ["Home","About"]
 	#choice = st.sidebar.selectbox("Menu",menu)
@@ -80,7 +80,7 @@ def main():
 				with st.sidebar:
 					
     					choice = option_menu( menu_title=None,options=["Cluster","Table", 'Query','Cluster Admin'],
-        				icons=['people','table', 'code','developer'],default_index=1,orientation="vertical")
+        				icons=['people','table', 'code','control'],default_index=1,orientation="vertical")
 
 				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
 
