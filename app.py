@@ -19,13 +19,7 @@ img = get_img_as_base64("image.jpg")
 
 page_bg_img = f"""
 <style>
-[data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://www.shutterstock.com/image-illustration/abstract-technology-background-network-connection-260nw-1230170854.jpg");
-background-size:100%;
-background-position: top left;
-background-repeat: no-repeat;
-background-attachment: local;
-}}
+
 
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("https://d2gg9evh47fn9z.cloudfront.net/1600px_COLOURBOX11140963.jpg");
