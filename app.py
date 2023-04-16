@@ -21,7 +21,7 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("https://media.istockphoto.com/id/1385979011/vector/connection-circuit-networking-modern-logistics-abstract-background-lines.jpg?b=1&s=612x612&w=0&k=20&c=_4OTe-fXmOWRuPX_mJL1wBUMpzi9lknP7qY20jUQg4Y=");
-
+background-size:100%;
 background-position: top left;
 background-repeat: no-repeat;
 background-attachment: local;
