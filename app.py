@@ -32,7 +32,7 @@ def main():
 	)
 	with st.sidebar:
     		choice = option_menu("Main Menu", ["Home", 'Settings'], 
-        	icons=['house', 'gear'], menu_icon="cast", default_index=1)
+        	icons=['house', 'gear'], menu_icon="cast", default_index=1,orientation="vertical")
     	
 	#menu = ["Home","About"]
 	#choice = st.sidebar.selectbox("Menu",menu)
