@@ -1,5 +1,6 @@
 # Core Pkgs
 import streamlit as st 
+import base64
 import pandas as pd
 from streamlit_option_menu import  option_menu
 # DB Mgmt
