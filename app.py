@@ -79,7 +79,7 @@ def main():
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
     					choice = option_menu(".",["Registera","Logins", 'Homswwe'], 
-        				icons=['person','key', 'house'], menu_icon="pc", default_index=1,orientation="vertical")
+        				icons=['person','key', 'house'],default_index=1,orientation="horizontal")
 
 				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
 
