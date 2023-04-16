@@ -27,8 +27,8 @@ def main():
 	st.title("SQLSpace")
 	
 	with st.sidebar:
-    		choice = option_menu("Main Menu", ["Register","Login"], 
-        	icons=['person','key'], menu_icon="pc", default_index=1,orientation="horizontal")
+    		choice = option_menu("SQLSPACE", ["Register","Login"], 
+        	icons=['person','key'], menu_icon="SQL", default_index=1,orientation="horizontal")
     	
 	#menu = ["Home","About"]
 	#choice = st.sidebar.selectbox("Menu",menu)
@@ -79,8 +79,8 @@ def main():
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
 					
-    					choice = option_menu( menu_title=None,options=["Registera","Logins", 'Homswwe'],
-        				icons=['person','key', 'house'],default_index=1,orientation="vertical")
+    					choice = option_menu( menu_title=None,options=["Cluster","Table", 'Query','Cluster Admin'],
+        				icons=['group','chart', 'code','admin'],default_index=1,orientation="vertical")
 
 				task = st.selectbox("Task",["Add Posts","Analytics","Manage"])
 
