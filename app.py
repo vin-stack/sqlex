@@ -20,7 +20,7 @@ img = get_img_as_base64("image.jpg")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://t3.ftcdn.net/jpg/04/92/30/44/360_F_492304440_pUUn0H4sxqubBZuJWY48I6cTyFZ1TqN1.jpg");
+background-image: url("https://media.istockphoto.com/id/1385979011/vector/connection-circuit-networking-modern-logistics-abstract-background-lines.jpg?b=1&s=612x612&w=0&k=20&c=_4OTe-fXmOWRuPX_mJL1wBUMpzi9lknP7qY20jUQg4Y=");
 background-size: 180%;
 background-position: top left;
 background-repeat: no-repeat;
