@@ -204,7 +204,8 @@ def main():
 
 
 				elif choicee =="Database":
-					st.write("Create Database under cluster:",cluster_id)
+					a="NODE_AREA_1"
+					st.write("Create Database under cluster:",a)
 					create_database()
 				    
 
@@ -237,6 +238,13 @@ def main():
 								query_df = pd.DataFrame(query_results)
 								st.dataframe(query_df)
 				    
+				elif choice=="Cluster Admin":
+					st.title("Mange Cluster")
+					st.info("NODE_AREA_1")
+					st.markdown("--------------------")
+					st.title("Mange Databases")
+					st.info("SAMPLE.db")
+					
 				else:
 					st.print("1")
 				    
