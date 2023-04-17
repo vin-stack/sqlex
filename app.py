@@ -49,7 +49,8 @@ def sql_executor(raw_code):
 city = ['ID,', 'Name,', 'CountryCode,', 'District,', 'Population']
 country = ['Code,', 'Name,', 'Continent,', 'Region,', 'SurfaceArea,', 'IndepYear,', 'Population,', 'LifeExpectancy,', 'GNP,', 'GNPOld,', 'LocalName,', 'GovernmentForm,', 'HeadOfState,', 'Capital,', 'Code2']
 countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
-
+cluster_id,cluster_id2,cluster_id3,cluster_id4,cluster_id5="0"
+                
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -113,19 +114,20 @@ def main():
 		st.subheader("About")
 		username = st.text_input("Username")
 		password = st.text_input("Password",type='password')
+  
 		if st.checkbox("Login"):
 			create_usertable()
 			result = login_user(username,password)
 			# result = login_user_unsafe(username,password)
 			# if password == "12345":
+            
 			if result:
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
 					
     					choicee = option_menu( menu_title=None,options=["Cluster","Database","Table", 'Query','Cluster Admin'],
         				icons=['people',"server",'table', 'code','widget'],default_index=1,orientation="vertical")
-                        cluster_id,cluster_id2,cluster_id3,cluster_id4,cluster_id5="0"
-                
+                       
                 if choicee == "Cluster":
                         st.title("Create Cluster")
                         cluster_id=st.text_input
