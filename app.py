@@ -209,6 +209,7 @@ def main():
 
 				elif choicee =="Table":
 					upload_data()
+					run_query()
 				              
 
 				else:
