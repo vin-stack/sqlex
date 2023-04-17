@@ -194,7 +194,8 @@ def main():
 				if choicee == "Cluster":
 					
 					st.title("Create Cluster")
-					cluster_id=st.text_input
+					#title = st.text_input('Movie title', 'Life of Brian')
+					cluster_id=st.text_input('Cluster Name', 'NODE_AREA_1')
 					st.info(cluster_id)
 					if cluster_id:
 					    cluster_id2=st.text_input
