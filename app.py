@@ -128,122 +128,122 @@ def main():
     					choicee = option_menu( menu_title=None,options=["Cluster","Database","Table", 'Query','Cluster Admin'],
         				icons=['people',"server",'table', 'code','widget'],default_index=1,orientation="vertical")
                        
-                if choicee == "Cluster":
-                        st.title("Create Cluster")
-                        cluster_id=st.text_input
-                        st.info(cluster_id)
-                        if cluster_id:
-                            cluster_id2=st.text_input
-                            st.info(cluster_id2)
-                            
-                            if cluster_id2:
-                                cluster_id3=st.text_input
-                                st.info(cluster_id3)
-                                
-                                if cluster_id3:
-                                    cluster_id4=st.text_input
-                                    st.info(cluster_id4)
-                                    
-                                    if cluster_id4:
-                                        cluster_id5=st.text_input
-                                        st.info(cluster_id5)
-                                        
-                                        
-                                        
-                elif choicee =="Database":
-                    st.markdown("# Create Database")
+				if choicee == "Cluster":
+					st.title("Create Cluster")
+					cluster_id=st.text_input
+					st.info(cluster_id)
+					if cluster_id:
+					    cluster_id2=st.text_input
+					    st.info(cluster_id2)
 
-                    st.write("""A database in SQLite is just a file on same server. 
-                    By convention their names always end in .db""")
+					    if cluster_id2:
+						cluster_id3=st.text_input
+						st.info(cluster_id3)
+
+						if cluster_id3:
+						    cluster_id4=st.text_input
+						    st.info(cluster_id4)
+
+						    if cluster_id4:
+							cluster_id5=st.text_input
+							st.info(cluster_id5)
 
 
-                    db_filename = st.text_input("DB Filename")
-                    create_db = st.button('Create Database')
 
-                    if create_db:
-                        if db_filename.endswith('.db'):
-                            conn = create_connection(db_filename)
-                            st.write(conn) # success message?
-                        else: 
-                            st.write('DB filename must end with .db, please retry.')
-                     
-                elif choice =="Table":
-                    st.markdown("# Upload CSV Data to Table")
-                    # https://discuss.streamlit.io/t/uploading-csv-and-excel-files/10866/2
-                    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
-                    db_filename = st.selectbox('DB Filename', sqlite_dbs)
-                    table_name = st.text_input('Table Name to Insert')
-                    conn = create_connection(db_filename)
-                    uploaded_file = st.file_uploader('Choose a file')
-                    if uploaded_file is not None:
-                        #read csv
-                        try:
-                            df = pd.read_csv(uploaded_file)
-                            df.to_sql(name=table_name, con=conn)
-                            st.write('Data uploaded successfully. These are the first 5 rows.')
-                            st.dataframe(df.head(5))
+				elif choicee =="Database":
+				    st.markdown("# Create Database")
 
-                        except Exception as e:
-                            st.write(e)                 
-                 
-                else:
-                    st.markdown("# Run Query")
-                    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
-                    db_filename = st.selectbox('DB Filename', sqlite_dbs)
+				    st.write("""A database in SQLite is just a file on same server. 
+				    By convention their names always end in .db""")
 
-                    query = st.text_area("SQL Query", height=100)
-                    conn = create_connection(db_filename)
-                    st.write(conn)
 
-                    submitted = st.button('Run Query')
+				    db_filename = st.text_input("DB Filename")
+				    create_db = st.button('Create Database')
 
-                    if submitted:
-                        try:
-                            st.info("Query Submitted")
-                            query = conn.execute(query)
-                            st.write(query)
-                            cols = [column[0] for column in query.description]
-                            results_df= pd.DataFrame.from_records(
-                                data = query.fetchall(), 
-                                
-                                columns = cols
-                            )
-                            st.dataframe(results_df)
-                        except Exception as e:
-                            st.write(e)
+				    if create_db:
+					if db_filename.endswith('.db'):
+					    conn = create_connection(db_filename)
+					    st.write(conn) # success message?
+					else: 
+					    st.write('DB filename must end with .db, please retry.')
 
-                    st.sidebar.markdown("# Run Query")
-                                    
-				col1,col2 = st.beta_columns(2)
+				elif choice =="Table":
+				    st.markdown("# Upload CSV Data to Table")
+				    # https://discuss.streamlit.io/t/uploading-csv-and-excel-files/10866/2
+				    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
+				    db_filename = st.selectbox('DB Filename', sqlite_dbs)
+				    table_name = st.text_input('Table Name to Insert')
+				    conn = create_connection(db_filename)
+				    uploaded_file = st.file_uploader('Choose a file')
+				    if uploaded_file is not None:
+					#read csv
+					try:
+					    df = pd.read_csv(uploaded_file)
+					    df.to_sql(name=table_name, con=conn)
+					    st.write('Data uploaded successfully. These are the first 5 rows.')
+					    st.dataframe(df.head(5))
 
-				with col1:
-					with st.form(key='query_form'):
-						raw_code = st.text_area("SQL Code Here")
-						submit_code = st.form_submit_button("Execute")
+					except Exception as e:
+					    st.write(e)                 
 
-					# Table of Info
+				else:
+				    st.markdown("# Run Query")
+				    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
+				    db_filename = st.selectbox('DB Filename', sqlite_dbs)
 
-					with st.beta_expander("Table Info"):
-						table_info = {'city':city,'country':country,'countrylanguage':countrylanguage}
-						st.json(table_info)
+				    query = st.text_area("SQL Query", height=100)
+				    conn = create_connection(db_filename)
+				    st.write(conn)
 
-				# Results Layouts
-				with col2:
-					if submit_code:
-						st.info("Query Submitted")
-						st.code(raw_code)
+				    submitted = st.button('Run Query')
 
-						# Results 
-						query_results = sql_executor(raw_code)
-						with st.beta_expander("Results"):
-							st.write(query_results)
+				    if submitted:
+					try:
+					    st.info("Query Submitted")
+					    query = conn.execute(query)
+					    st.write(query)
+					    cols = [column[0] for column in query.description]
+					    results_df= pd.DataFrame.from_records(
+						data = query.fetchall(), 
 
-						with st.beta_expander("Pretty Table"):
-							query_df = pd.DataFrame(query_results)
-							st.dataframe(query_df)
+						columns = cols
+					    )
+					    st.dataframe(results_df)
+					except Exception as e:
+					    st.write(e)
 
-			else:
-				st.warning("Incorrect Username/Password")
+				    st.sidebar.markdown("# Run Query")
+
+						col1,col2 = st.beta_columns(2)
+
+						with col1:
+							with st.form(key='query_form'):
+								raw_code = st.text_area("SQL Code Here")
+								submit_code = st.form_submit_button("Execute")
+
+							# Table of Info
+
+							with st.beta_expander("Table Info"):
+								table_info = {'city':city,'country':country,'countrylanguage':countrylanguage}
+								st.json(table_info)
+
+						# Results Layouts
+						with col2:
+							if submit_code:
+								st.info("Query Submitted")
+								st.code(raw_code)
+
+								# Results 
+								query_results = sql_executor(raw_code)
+								with st.beta_expander("Results"):
+									st.write(query_results)
+
+								with st.beta_expander("Pretty Table"):
+									query_df = pd.DataFrame(query_results)
+									st.dataframe(query_df)
+
+					else:
+						st.warning("Incorrect Username/Password")
 
 	else:
 		st.subheader("Create An Account")
