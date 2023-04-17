@@ -218,7 +218,7 @@ def main():
 					with col1:
 						with st.form(key='query_form'):
 							raw_code = st.text_area("SQL Code Here")
-							submit_code = st.form_submit_button("Exec
+							submit_code = st.form_submit_button("Execute")
 						# Table of
 						with st.beta_expander("Table Info"):
 							table_info = {'city':city,'country':country,'countrylanguage':countrylanguage}
