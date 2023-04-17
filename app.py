@@ -222,7 +222,7 @@ def main():
 						# Table of
 						with st.beta_expander("Table Info"):
 							table_info = {'city':city,'country':country,'countrylanguage':countrylanguage}
-							st.json(table_
+							st.json(table_info)
 					# Results Layouts
 					with col2:
 						if submit_code:
