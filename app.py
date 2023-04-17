@@ -207,7 +207,7 @@ def main():
 					create_database()
 				    
 
-				elif choice =="Table":
+				elif choicee =="Table":
 					upload_data()
 				              
 
