@@ -136,18 +136,7 @@ def main():
 					    cluster_id2=st.text_input
 					    st.info(cluster_id2)
 
-					    if cluster_id2:
-						cluster_id3=st.text_input
-						st.info(cluster_id3)
-
-						if cluster_id3:
-						    cluster_id4=st.text_input
-						    st.info(cluster_id4)
-
-						    if cluster_id4:
-							cluster_id5=st.text_input
-							st.info(cluster_id5)
-
+					    
 
 
 				elif choicee =="Database":
