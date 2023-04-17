@@ -151,6 +151,7 @@ def main():
 				    if create_db:
                         		st.writie(".")
                         		if db_filename.endswith('.db'):
+						
 						conn = create_connection(db_filename)
 						st.write(conn) # success message?
 					else: 
