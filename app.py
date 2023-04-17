@@ -3,7 +3,7 @@ import streamlit as st
 import base64
 import pandas as pd
 from streamlit_option_menu import  option_menu
-# DB Mgmt
+# DB Mgm
 import sqlite3 
 from db_fxns import *
 conn = sqlite3.connect('data/world.sqlite')
