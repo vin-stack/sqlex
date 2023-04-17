@@ -216,9 +216,9 @@ def main():
 				              
 
 				elif choicee=="Query":
-					redirect('https://vin-stack-sqtest-app-a5wcyu.streamlit.app/')
+					#redirect('https://vin-stack-sqtest-app-a5wcyu.streamlit.app/')
 					url='https://vin-stack-sqtest-app-a5wcyu.streamlit.app/'
-					webbrowser.open_new_tab(url)
+					webbrowser.open(url)
 					col1,col2 = st.beta_columns(2)
 
 					with col1:
