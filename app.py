@@ -238,7 +238,7 @@ def main():
 								query_df = pd.DataFrame(query_results)
 								st.dataframe(query_df)
 				    
-				elif choice=="Cluster Admin":
+				elif choicee=="Cluster Admin":
 					st.title("Mange Cluster")
 					st.info("NODE_AREA_1")
 					st.markdown("--------------------")
