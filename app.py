@@ -51,13 +51,26 @@ country = ['Code,', 'Name,', 'Continent,', 'Region,', 'SurfaceArea,', 'IndepYear
 countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
 
 
+def create_connection(db_file):
+    """ create a database connection to the SQLite database
+        specified by the db_file
+    :param db_file: database file
+    :return: Connection object or None
+    """
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+    except Exception as e:
+        st.write(e)
+
+    return conn
 
 
 def main():
 	st.title("SQLSpace")
 	
 	with st.sidebar:
-    		choice = option_menu("SQLSPACE", ["Register","Login"], 
+    		choice = option_menu("SQLSPACE", ["Sign Up","Sign In"], 
         	icons=['person','key'], menu_icon="server", default_index=1,orientation="horizontal")
     	
 	#menu = ["Home","About"]
@@ -109,9 +122,96 @@ def main():
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
 					
-    					choice = option_menu( menu_title=None,options=["Cluster","Table", 'Query','Cluster Admin'],
-        				icons=['people','table', 'code','track'],default_index=1,orientation="vertical")
+    					choicee = option_menu( menu_title=None,options=["Cluster","Database","Table", 'Query','Cluster Admin'],
+        				icons=['people',"server",'table', 'code','widget'],default_index=1,orientation="vertical")
+                        cluster_id,cluster_id2,cluster_id3,cluster_id4,cluster_id5="0"
+                
+                if choicee == "Cluster":
+                        st.title("Create Cluster")
+                        cluster_id=st.text_input
+                        st.info(cluster_id)
+                        if cluster_id:
+                            cluster_id2=st.text_input
+                            st.info(cluster_id2)
+                            
+                            if cluster_id2:
+                                cluster_id3=st.text_input
+                                st.info(cluster_id3)
+                                
+                                if cluster_id3:
+                                    cluster_id4=st.text_input
+                                    st.info(cluster_id4)
+                                    
+                                    if cluster_id4:
+                                        cluster_id5=st.text_input
+                                        st.info(cluster_id5)
+                                        
+                                        
+                                        
+                elif choicee =="Database":
+                    st.markdown("# Create Database")
 
+                    st.write("""A database in SQLite is just a file on same server. 
+                    By convention their names always end in .db""")
+
+
+                    db_filename = st.text_input("DB Filename")
+                    create_db = st.button('Create Database')
+
+                    if create_db:
+                        if db_filename.endswith('.db'):
+                            conn = create_connection(db_filename)
+                            st.write(conn) # success message?
+                        else: 
+                            st.write('DB filename must end with .db, please retry.')
+                     
+                elif choice =="Table":
+                    st.markdown("# Upload CSV Data to Table")
+                    # https://discuss.streamlit.io/t/uploading-csv-and-excel-files/10866/2
+                    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
+                    db_filename = st.selectbox('DB Filename', sqlite_dbs)
+                    table_name = st.text_input('Table Name to Insert')
+                    conn = create_connection(db_filename)
+                    uploaded_file = st.file_uploader('Choose a file')
+                    if uploaded_file is not None:
+                        #read csv
+                        try:
+                            df = pd.read_csv(uploaded_file)
+                            df.to_sql(name=table_name, con=conn)
+                            st.write('Data uploaded successfully. These are the first 5 rows.')
+                            st.dataframe(df.head(5))
+
+                        except Exception as e:
+                            st.write(e)                 
+                 
+                else:
+                    st.markdown("# Run Query")
+                    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
+                    db_filename = st.selectbox('DB Filename', sqlite_dbs)
+
+                    query = st.text_area("SQL Query", height=100)
+                    conn = create_connection(db_filename)
+                    st.write(conn)
+
+                    submitted = st.button('Run Query')
+
+                    if submitted:
+                        try:
+                            st.info("Query Submitted")
+                            query = conn.execute(query)
+                            st.write(query)
+                            cols = [column[0] for column in query.description]
+                            results_df= pd.DataFrame.from_records(
+                                data = query.fetchall(), 
+                                
+                                columns = cols
+                            )
+                            st.dataframe(results_df)
+                        except Exception as e:
+                            st.write(e)
+
+                    st.sidebar.markdown("# Run Query")
+                                    
 				col1,col2 = st.beta_columns(2)
 
 				with col1:
