@@ -148,13 +148,12 @@ def main():
 
 				    db_filename = st.text_input("DB Filename")
 				    create_db = st.button('Create Database')
-
 				    if create_db:
-					if db_filename.endswith('.db'):
-					    conn = create_connection(db_filename)
-					    st.write(conn) # success message?
-					else: 
-					    st.write('DB filename must end with .db, please retry.')
+						if db_filename.endswith('.db'):
+					    	conn = create_connection(db_filename)
+					    	st.write(conn) # success message?
+						else: 
+					    	st.write('DB filename must end with .db, please retry.')
 
 				elif choice =="Table":
 				    st.markdown("# Upload CSV Data to Table")
