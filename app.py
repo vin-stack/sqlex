@@ -49,7 +49,8 @@ def sql_executor(raw_code):
 city = ['ID,', 'Name,', 'CountryCode,', 'District,', 'Population']
 country = ['Code,', 'Name,', 'Continent,', 'Region,', 'SurfaceArea,', 'IndepYear,', 'Population,', 'LifeExpectancy,', 'GNP,', 'GNPOld,', 'LocalName,', 'GovernmentForm,', 'HeadOfState,', 'Capital,', 'Code2']
 countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
-cluster_id,cluster_id2,cluster_id3,cluster_id4,cluster_id5="0"
+cluster_id="0"
+cluster_id2="0"
                 
 
 def create_connection(db_file):
