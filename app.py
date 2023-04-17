@@ -212,7 +212,7 @@ def main():
 					
 				              
 
-				elif choicee=="Query:
+				elif choicee=="Query":
 					col1,col2 = st.beta_columns(2)
 
 					with col1:
