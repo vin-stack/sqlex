@@ -109,7 +109,7 @@ def upload_data():
 
 def run_query():
     st.markdown("# Run Query")
-    sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
+    sqlite_dbs = [file.endswith('.db')]
     db_filename = st.selectbox('DB Filename', sqlite_dbs)
 
     query = st.text_area("SQL Query", height=100)
