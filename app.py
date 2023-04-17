@@ -4,6 +4,7 @@ import base64
 import pandas as pd
 from streamlit_option_menu import  option_menu
 import os
+import webbrowser
 # DB Mgm
 import sqlite3 
 from db_fxns import *
