@@ -212,7 +212,7 @@ def main():
 					
 				              
 
-				else choicee=="Query:
+				elif choicee=="Query:
 					col1,col2 = st.beta_columns(2)
 
 					with col1:
@@ -236,7 +236,8 @@ def main():
 								query_df = pd.DataFrame(query_results)
 								st.dataframe(query_df)
 				    
-
+				else:
+					st.print("1")
 				    
 
 				
