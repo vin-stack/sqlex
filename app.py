@@ -126,7 +126,9 @@ def main():
 				with st.sidebar:
                         		choicee = option_menu( menu_title=None,options=["Cluster","Database","Table", 'Query','Cluster Admin'],
         		        	icons=['people',"server",'table', 'code','widget'],default_index=1,orientation="vertical")
-                		if choicee == "Cluster":
+                		
+				if choicee == "Cluster":
+					
 					st.title("Create Cluster")
 					cluster_id=st.text_input
 					st.info(cluster_id)
