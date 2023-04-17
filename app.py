@@ -173,7 +173,7 @@ def main():
 					st.dataframe(query_df)
 
 
-	elif choice =="Login":
+	elif choice =="Sign In":
 		st.subheader("About")
 		username = st.text_input("Username")
 		password = st.text_input("Password",type='password')
