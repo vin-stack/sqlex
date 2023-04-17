@@ -124,11 +124,9 @@ def main():
 			if result:
 				st.success("Logged In as {}".format(username))
 				with st.sidebar:
-					
-    					choicee = option_menu( menu_title=None,options=["Cluster","Database","Table", 'Query','Cluster Admin'],
-        				icons=['people',"server",'table', 'code','widget'],default_index=1,orientation="vertical")
-                       
-				if choicee == "Cluster":
+                        choicee = option_menu( menu_title=None,options=["Cluster","Database","Table", 'Query','Cluster Admin'],
+        		        icons=['people',"server",'table', 'code','widget'],default_index=1,orientation="vertical")
+                if choicee == "Cluster":
 					st.title("Create Cluster")
 					cluster_id=st.text_input
 					st.info(cluster_id)
@@ -149,11 +147,11 @@ def main():
 				    db_filename = st.text_input("DB Filename")
 				    create_db = st.button('Create Database')
 				    if create_db:
-					st.writie(".")
-					if db_filename.endswith('.db'):
-						conn = create_connection(db_filename)
-						st.write(conn) # success message?
-					else: 
+                        st.writie(".")
+                        if db_filename.endswith('.db'):
+						    conn = create_connection(db_filename)
+						    st.write(conn) # success message?
+					    else: 
 					    	st.write('DB filename must end with .db, please retry.')
 
 				elif choice =="Table":
