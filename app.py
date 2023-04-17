@@ -149,6 +149,7 @@ def main():
 				    db_filename = st.text_input("DB Filename")
 				    create_db = st.button('Create Database')
 				    if create_db:
+					st.writie(".")
 					if db_filename.endswith('.db'):
 					    conn = create_connection(db_filename)
 					    	st.write(conn) # success message?
